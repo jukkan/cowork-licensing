@@ -215,7 +215,7 @@ export default function CoworkCalculator() {
 
               {/* -------------------- RESULTS -------------------- */}
               <div className="space-y-6 lg:col-span-2">
-                <Card className="bg-brand-700 text-white">
+                <div className="rounded-2xl bg-brand-700 text-white shadow-card">
                   <div className="px-5 py-5">
                     <p className="text-sm font-medium text-brand-100">
                       <span className="text-brand-200">Step 4.</span> Estimated monthly spend
@@ -235,7 +235,7 @@ export default function CoworkCalculator() {
                       <Stat label="Annual (PayGo)" value={fmtUsd(results.annualPaygoUsd)} />
                     </div>
                   </div>
-                </Card>
+                </div>
 
                 {/* P3 comparison */}
                 <Card>
