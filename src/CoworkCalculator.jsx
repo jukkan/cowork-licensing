@@ -442,6 +442,17 @@ function Hero() {
 // How Cowork is priced — USL floor + 4 cost buckets
 // ---------------------------------------------------------------------------
 function PricingExplainer() {
+  const m365Experiences = [
+    { label: 'Copilot Chat', sub: 'Conversational, web-grounded' },
+    { label: 'Word', sub: 'Write, edit, summarize' },
+    { label: 'Excel', sub: 'Analyze & visualize' },
+    { label: 'PowerPoint', sub: 'Create & redesign slides' },
+    { label: 'Outlook', sub: 'Email & scheduling' },
+    { label: 'Teams', sub: 'Meetings & chat' },
+    { label: 'Work IQ', sub: 'Graph-powered context' },
+    { label: 'Pre-built agents', sub: 'SharePoint, Planner, more' },
+    { label: 'Multiple models', sub: 'GPT-4o, o-series & more' },
+  ]
   const buckets = [
     { label: 'Models', body: 'The AI model chosen for each task — quality, speed, and cost vary by what the task demands.' },
     { label: 'Context', body: 'Understanding of the people, roles, and collaboration behind the work — emails, files, meetings, and past interactions.' },
@@ -457,16 +468,32 @@ function PricingExplainer() {
           consumes.
         </SectionTitle>
 
-        <div className="mx-auto mt-10 max-w-4xl grid grid-cols-1 gap-6 md:grid-cols-2 md:items-start">
-          {/* The floor — standalone */}
-          <Card className="p-5">
-            <p className="text-sm font-semibold text-slate-500">The floor</p>
-            <h3 className="mt-1 font-semibold text-slate-900">Microsoft 365 Copilot (USL)</h3>
-            <p className="mt-2 text-sm text-slate-600">
-              A predictable per-user, per-month subscription: Copilot Chat; Copilot in Word, Excel, PowerPoint,
-              Outlook, and Teams; the Work IQ context engine; pre-built agents; and access to multiple models.
-            </p>
-          </Card>
+        <div className="mx-auto mt-10 max-w-4xl grid grid-cols-1 gap-6 md:grid-cols-2">
+          {/* The floor — expanded to match Cowork unit's visual weight */}
+          <div className="overflow-hidden rounded-2xl border border-slate-200 shadow-card">
+            <div className="px-5 py-5">
+              <p className="text-sm font-semibold text-slate-500">Per user &middot; flat fee</p>
+              <h3 className="mt-1 font-semibold text-slate-900">Microsoft 365 Copilot (USL)</h3>
+              <p className="mt-2 text-sm text-slate-600">
+                A predictable per-user, per-month subscription — the floor every Cowork user needs.
+              </p>
+            </div>
+            <div className="grid grid-cols-3 border-t border-slate-200 bg-slate-50">
+              {m365Experiences.map((item, i) => (
+                <div
+                  key={item.label}
+                  className={
+                    'px-3 py-3' +
+                    (i % 3 !== 0 ? ' border-l border-slate-200' : '') +
+                    (i >= 3 ? ' border-t border-slate-200' : '')
+                  }
+                >
+                  <p className="text-xs font-semibold text-slate-800">{item.label}</p>
+                  <p className="mt-0.5 text-xs leading-snug text-slate-600">{item.sub}</p>
+                </div>
+              ))}
+            </div>
+          </div>
 
           {/* On top: Cowork header + its 4 cost components as one connected unit */}
           <div className="overflow-hidden rounded-2xl border border-brand-200 shadow-card">
