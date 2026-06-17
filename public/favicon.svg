@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Cowork cost calculator">
+  <rect width="64" height="64" rx="14" fill="#1f47d6"/>
+  <!-- calculator body -->
+  <rect x="16" y="12" width="32" height="40" rx="5" fill="#ffffff"/>
+  <!-- display -->
+  <rect x="21" y="17" width="22" height="9" rx="2" fill="#bcd0ff"/>
+  <!-- credit dot -->
+  <circle cx="39.5" cy="21.5" r="2.4" fill="#1f47d6"/>
+  <!-- keys -->
+  <g fill="#5a85fb">
+    <rect x="21" y="30" width="6" height="6" rx="1.5"/>
+    <rect x="29" y="30" width="6" height="6" rx="1.5"/>
+    <rect x="37" y="30" width="6" height="6" rx="1.5"/>
+    <rect x="21" y="40" width="6" height="6" rx="1.5"/>
+    <rect x="29" y="40" width="6" height="6" rx="1.5"/>
+  </g>
+  <rect x="37" y="40" width="6" height="6" rx="1.5" fill="#1f47d6"/>
+</svg>
