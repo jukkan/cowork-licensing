@@ -369,55 +369,69 @@ function Header() {
 }
 
 // ---------------------------------------------------------------------------
-// Hero — what is Cowork (3 pillars)
+// Hero
 // ---------------------------------------------------------------------------
 function Hero() {
-  const pillars = [
-    {
-      title: 'Delegate complex work',
-      body: 'Execute long-running, multi-tool tasks. Add guidance anytime and keep work moving while you’re away — with checkpoints that keep you in control.',
-    },
-    {
-      title: 'Built for real work',
-      body: 'Grounded in your work context, powered by the best model for the task, and connected to the apps and systems you use every day.',
-    },
-    {
-      title: 'Work with confidence',
-      body: 'Secure, compliant, and observable by design — operating within your Microsoft 365 trust boundary and existing controls.',
-    },
-  ]
   return (
     <section className="border-b border-slate-200 bg-white">
-      <div className="mx-auto max-w-6xl px-4 py-14 sm:py-20">
-        <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700">
-            Generally available — June 16, 2026
+      <div className="mx-auto max-w-6xl px-4 py-10 sm:py-14">
+        <div className="mx-auto max-w-2xl text-center">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-brand-200 bg-brand-50 px-3 py-1 text-xs font-medium text-brand-700">
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-brand-500" aria-hidden="true" />
+            Generally available · June 16, 2026
           </span>
-          <h1 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+          <h1
+            className="mt-5 text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl"
+            style={{ textWrap: 'balance' }}
+          >
             Budget for Microsoft Copilot Cowork
           </h1>
-          <p className="mt-4 text-lg text-slate-600">
-            Copilot Cowork is an agentic system that runs complex, long-running, multi-tool tasks end-to-end. It's
-            billed on usage in <strong className="text-slate-800">Copilot Credits</strong> — so this is a modern,
-            interactive take on Microsoft's budgeting estimator, plus the licensing context to go with it.
+          <p
+            className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-slate-600"
+            style={{ textWrap: 'pretty' }}
+          >
+            Cowork bills on usage, in{' '}
+            <strong className="font-semibold text-slate-800">Copilot Credits</strong>. Enter
+            your headcount and intensity — this tool projects your monthly spend and matches
+            you to the best pre-purchase plan.
           </p>
-          <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
-            <a href="#calculator" className="rounded-xl bg-brand-600 px-5 py-2.5 font-semibold text-white shadow-sm hover:bg-brand-700">
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+            <a
+              href="#calculator"
+              className="rounded-xl bg-brand-600 px-5 py-2.5 font-semibold text-white shadow-sm transition-colors hover:bg-brand-700"
+            >
               Open the calculator
             </a>
-            <a href="#how-priced" className="rounded-xl border border-slate-300 bg-white px-5 py-2.5 font-semibold text-slate-700 hover:bg-slate-50">
+            <a
+              href="#how-priced"
+              className="rounded-xl border border-slate-300 bg-white px-5 py-2.5 font-semibold text-slate-700 transition-colors hover:bg-slate-50"
+            >
               How pricing works
             </a>
           </div>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-3">
-          {pillars.map((p) => (
-            <Card key={p.title} className="p-5">
-              <h3 className="font-semibold text-slate-900">{p.title}</h3>
-              <p className="mt-2 text-sm text-slate-600">{p.body}</p>
-            </Card>
-          ))}
+        {/* The estimation model, shown upfront */}
+        <div className="mx-auto mt-10 max-w-3xl overflow-hidden rounded-2xl border border-slate-200 bg-slate-50">
+          <div className="px-6 py-5 text-center font-mono text-sm leading-loose text-slate-700 sm:text-base">
+            <span className="text-slate-400">monthly credits</span>
+            {' = Σ ('}
+            <span className="font-medium text-slate-700">users</span>
+            {' × '}
+            <span className="font-semibold text-brand-700">light</span>
+            {'×125 + '}
+            <span className="font-semibold text-brand-700">medium</span>
+            {'×500 + '}
+            <span className="font-semibold text-brand-700">heavy</span>
+            {'×2,500)'}
+          </div>
+          <div className="border-t border-slate-200 bg-white/70 px-6 py-3 text-center text-xs text-slate-400">
+            <span className="font-medium text-slate-500">monthly spend</span>
+            {' = monthly credits × '}
+            <span className="font-semibold text-slate-600">$0.01</span>
+            <span className="mx-2">·</span>
+            defaults from Microsoft Frontier usage (5/27/2026), Anthropic Opus 4.8
+          </div>
         </div>
       </div>
     </section>
