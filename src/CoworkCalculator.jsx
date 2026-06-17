@@ -443,21 +443,22 @@ function Hero() {
 // ---------------------------------------------------------------------------
 function PricingExplainer() {
   const buckets = [
-    { n: '1', label: 'Models', body: 'The AI model chosen for each task — quality, speed, and cost vary by what the task demands.' },
-    { n: '2', label: 'Context', body: 'Understanding of the people, roles, and collaboration behind the work — drawn from emails, files, meetings, and past interactions.' },
-    { n: '3', label: 'Tools', body: 'Actions the system takes to get work done: sending emails, scheduling meetings, updating documents, and more.' },
-    { n: '4', label: 'Runtime', body: 'Managed cloud orchestration that runs agents and keeps them working across tasks, including long-running work.' },
+    { label: 'Models', body: 'The AI model chosen for each task — quality, speed, and cost vary by what the task demands.' },
+    { label: 'Context', body: 'Understanding of the people, roles, and collaboration behind the work — emails, files, meetings, and past interactions.' },
+    { label: 'Tools', body: 'Actions the system takes to get work done: sending emails, scheduling meetings, updating documents, and more.' },
+    { label: 'Runtime', body: 'Managed cloud orchestration that runs agents and keeps them working across tasks, including long-running work.' },
   ]
   return (
     <section id="how-priced" className="bg-white py-12 sm:py-16">
       <div className="mx-auto max-w-6xl px-4">
-        <SectionTitle eyebrow="How it's priced" title="A subscription floor, plus usage on top">
+        <SectionTitle title="A subscription floor, plus usage on top">
           Copilot Cowork requires the Microsoft 365 Copilot subscription as a prerequisite — that license is the
           predictable per-user floor. Cowork itself adds no included entitlements: it's billed purely on what each task
           consumes.
         </SectionTitle>
 
-        <div className="mx-auto mt-8 grid max-w-4xl grid-cols-1 gap-4 md:grid-cols-2">
+        <div className="mx-auto mt-10 max-w-4xl grid grid-cols-1 gap-6 md:grid-cols-2 md:items-start">
+          {/* The floor — standalone */}
           <Card className="p-5">
             <p className="text-sm font-semibold text-slate-500">The floor</p>
             <h3 className="mt-1 font-semibold text-slate-900">Microsoft 365 Copilot (USL)</h3>
@@ -466,29 +467,33 @@ function PricingExplainer() {
               Outlook, and Teams; the Work IQ context engine; pre-built agents; and access to multiple models.
             </p>
           </Card>
-          <Card className="p-5 ring-1 ring-brand-100">
-            <p className="text-sm font-semibold text-brand-600">On top — usage based</p>
-            <h3 className="mt-1 font-semibold text-slate-900">Copilot Cowork</h3>
-            <p className="mt-2 text-sm text-slate-600">
-              Billed in Copilot Credits, with the price of each task calculated from four inputs. No Cowork entitlements
-              are included with the Microsoft 365 Copilot subscription.
-            </p>
-          </Card>
-        </div>
 
-        <p className="mt-10 text-center text-sm font-semibold uppercase tracking-wide text-slate-500">
-          The four cost buckets behind every task
-        </p>
-        <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {buckets.map((b) => (
-            <Card key={b.label} className="p-5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-600 text-sm font-bold text-white">
-                {b.n}
-              </div>
-              <h3 className="mt-3 font-semibold text-slate-900">{b.label}</h3>
-              <p className="mt-1.5 text-sm text-slate-600">{b.body}</p>
-            </Card>
-          ))}
+          {/* On top: Cowork header + its 4 cost components as one connected unit */}
+          <div className="overflow-hidden rounded-2xl border border-brand-200 shadow-card">
+            <div className="bg-brand-50 px-5 py-5">
+              <p className="text-sm font-semibold text-brand-600">On top — usage based</p>
+              <h3 className="mt-1 font-semibold text-slate-900">Copilot Cowork</h3>
+              <p className="mt-2 text-sm text-slate-600">
+                Billed in Copilot Credits, with the price of each task built from four inputs.
+                No Cowork entitlements are included with the Microsoft 365 Copilot subscription.
+              </p>
+            </div>
+            <div className="grid grid-cols-2 border-t border-brand-200">
+              {buckets.map((b, i) => (
+                <div
+                  key={b.label}
+                  className={
+                    'bg-white p-4' +
+                    (i >= 2 ? ' border-t border-slate-200' : '') +
+                    (i % 2 === 1 ? ' border-l border-slate-200' : '')
+                  }
+                >
+                  <p className="text-sm font-semibold text-slate-800">{b.label}</p>
+                  <p className="mt-1 text-sm leading-snug text-slate-600">{b.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
