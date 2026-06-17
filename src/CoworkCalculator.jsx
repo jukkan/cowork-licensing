@@ -40,8 +40,8 @@ function SectionTitle({ eyebrow, title, children }) {
       {eyebrow && (
         <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-brand-600">{eyebrow}</p>
       )}
-      <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">{title}</h2>
-      {children && <p className="mt-3 text-slate-600">{children}</p>}
+      <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl" style={{ textWrap: 'balance' }}>{title}</h2>
+      {children && <p className="mt-3 text-slate-600" style={{ textWrap: 'pretty' }}>{children}</p>}
     </div>
   )
 }
@@ -55,7 +55,7 @@ function NumberInput({ value, onChange, ariaLabel, min = 0, className = '' }) {
       value={value}
       aria-label={ariaLabel}
       onChange={(e) => onChange(e.target.value === '' ? '' : Number(e.target.value))}
-      className={`w-full rounded-lg border border-slate-300 bg-white px-2 py-1.5 text-right text-sm tabular-nums text-slate-800 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200 ${className}`}
+      className={`w-full rounded-lg border border-slate-300 bg-white px-2 py-1.5 text-right text-sm tabular-nums text-slate-800 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-300 ${className}`}
     />
   )
 }
@@ -92,7 +92,7 @@ export default function CoworkCalculator() {
         {/* ============================ CALCULATOR ============================ */}
         <section id="calculator" className="bg-slate-50 py-12 sm:py-16">
           <div className="mx-auto max-w-6xl px-4">
-            <SectionTitle eyebrow="Interactive estimate" title="Estimate your Copilot Cowork spend">
+            <SectionTitle title="Estimate your Copilot Cowork spend">
               Cowork is billed on usage, in Copilot Credits. Enter how many people will use it and how
               intensely, and this tool projects your monthly credits and cost — then compares
               pay-as-you-go with the discounted pre-purchase plan.
@@ -133,7 +133,7 @@ export default function CoworkCalculator() {
                       </thead>
                       <tbody className="divide-y divide-slate-100">
                         {personas.map((p, i) => (
-                          <tr key={p.id} className="align-middle">
+                          <tr key={p.id} className="align-middle transition-colors duration-100 hover:bg-brand-50/60">
                             <td className="px-5 py-2.5">
                               <div className="flex items-center gap-2">
                                 <span className="h-2.5 w-2.5 shrink-0 rounded-full" style={{ background: PERSONA_COLORS[i] }} />
@@ -197,7 +197,7 @@ export default function CoworkCalculator() {
                           ariaLabel={`${c.label} credits per prompt`}
                           className="text-center"
                         />
-                        <p className="mt-1 text-center text-[11px] text-slate-400">illustrative {c.range}</p>
+                        <p className="mt-1 text-center text-xs text-slate-400">illustrative {c.range}</p>
                       </div>
                     ))}
                   </div>
@@ -215,7 +215,7 @@ export default function CoworkCalculator() {
 
               {/* -------------------- RESULTS -------------------- */}
               <div className="space-y-6 lg:col-span-2">
-                <Card className="bg-gradient-to-br from-brand-600 to-brand-800 text-white">
+                <Card className="bg-brand-700 text-white">
                   <div className="px-5 py-5">
                     <p className="text-sm font-medium text-brand-100">
                       <span className="text-brand-200">Step 4.</span> Estimated monthly spend
@@ -230,7 +230,7 @@ export default function CoworkCalculator() {
 
                     <div className="mt-4 grid grid-cols-2 gap-3 border-t border-white/20 pt-4 text-sm">
                       <Stat label="Avg / user / month" value={fmtUsd2(results.avgCostPerUserUsd)} />
-                      <Stat label="Credits / user / mo" value={fmtInt(results.avgCreditsPerUser)} />
+                      <Stat label="Credits / user / month" value={fmtInt(results.avgCreditsPerUser)} />
                       <Stat label="Annual credits" value={fmtCredits(results.annualCredits)} />
                       <Stat label="Annual (PayGo)" value={fmtUsd(results.annualPaygoUsd)} />
                     </div>
@@ -295,7 +295,7 @@ export default function CoworkCalculator() {
                           </div>
                           <div className="h-2.5 w-full overflow-hidden rounded-full bg-slate-100">
                             <div
-                              className="h-full rounded-full"
+                              className="h-full rounded-full transition-[width] duration-300 ease-out motion-reduce:transition-none"
                               style={{ width: `${(r.monthlyCredits / maxPersonaCredits) * 100}%`, background: PERSONA_COLORS[i] }}
                             />
                           </div>

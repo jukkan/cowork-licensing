@@ -44,6 +44,15 @@ When Microsoft publishes new pricing or Frontier-program averages, update only `
 
 Then update `src/calc.test.mjs` to reflect the new expected per-user totals.
 
+## Design context
+
+This project uses impeccable for design work.
+
+- `PRODUCT.md` — register (brand), target users, brand personality, design principles
+- `DESIGN.md` — visual system (colors, typography, components) — generate with `/impeccable document` once the site is styled
+
+Run `/impeccable` for design commands, or `/impeccable live` for in-browser variant mode.
+
 ## Deploy
 
 Pushing to `main` triggers `.github/workflows/deploy.yml`, which runs `npm run verify`, builds, and publishes `dist/` to GitHub Pages at `cowork.licensing.guide` (set by `public/CNAME`).
