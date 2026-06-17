@@ -8,6 +8,8 @@ denominated in **Copilot Credits**. It's a modern take on Microsoft's
 **Part of:** [The Licensing Guide](https://licensing.guide/) · sibling to the
 [Dataverse Capacity Calculator](https://dataverse.licensing.guide/)
 
+<img width="1655" height="1247" alt="image" src="https://github.com/user-attachments/assets/e994a804-4287-4926-8a10-5d7e95675355" />
+
 ## What it does
 
 - **Reproduces Microsoft's 4-step estimator model** exactly (see [`specs.md`](./specs.md)):
